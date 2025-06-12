@@ -50,8 +50,8 @@
 :root {
     --gradient-1: #0575e6;
     --gradient-2: #021b79;
-    --gradient-80: #0449b0cb;
-    --gradient-100: #0449b0;
+    --gradient-80: #0772e4ce;
+    --gradient-100: #0772e4;
     --radius: 0.625rem;
     --background: oklch(1 0 0);
     --foreground: oklch(0.145 0 0);

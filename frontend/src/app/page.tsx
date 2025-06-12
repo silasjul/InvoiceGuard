@@ -1,11 +1,14 @@
+import Mailanimation from "@/components/mailanimation";
 import Navbar from "@/components/navbar";
+import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
+import Link from "next/link";
 
 export default function Home() {
     return (
         <div className="h-[300vh]">
             <Navbar />
-            <section className="flex-col mt-[10vh] justify-center">
+            <section className="flex flex-col mt-[10vh] justify-center items-center">
                 <div className="flex justify-center mb-8">
                     <div className="w-fit rounded-xl px-4 py-2 shadow-lg flex gap-2 justify-center">
                         <Send />
@@ -20,11 +23,17 @@ export default function Home() {
                 <h1 className="text-center text-7xl font-extrabold text-balance gradient-text">
                     Invoice Reminders
                 </h1>
-                <div className="mt-4 flex justify-center">
-                    <p className="text-muted-foreground text-xl text-center w-1/2">
+                <div className="mt-4 mb-16 flex justify-center">
+                    <p className="text-muted-foreground text-xl text-center">
                         Stop wasting hours chasing overdue invoices.
                     </p>
                 </div>
+                <Link href={"#"}>
+                    <Button className="py-6 px-8 mb-12 rounded-full text-md border hover:cursor-pointer bg-gradient-100 hover:bg-gradient-80">
+                        Get Started
+                    </Button>
+                </Link>
+                <Mailanimation />
             </section>
         </div>
     );

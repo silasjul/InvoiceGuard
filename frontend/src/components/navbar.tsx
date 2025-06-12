@@ -8,7 +8,7 @@ export default function Navbar() {
         <div className="m-8 flex justify-center items-center">
             <Link className="flex gap-1 items-center mr-auto" href={"/"}>
                 <img src={"/logo.png"} alt={"logo"} width={33} height={33} />
-                <h3 className="font-semibold">InvoiceGuard</h3>
+                <h3 className="font-semibold">InvoicePilot</h3>
             </Link>
             <div className="flex gap-12 font-medium *:hover:underline *:underline-offset-3 *:opacity-80 *:hover:opacity-100 *:duration-75">
                 <div className="hover:cursor-pointer">Features</div>
@@ -22,7 +22,7 @@ export default function Navbar() {
                     </Button>
                 </Link>
                 <Link href={"#"}>
-                    <Button className="py-5 border hover:cursor-pointer bg-gradient-80 hover:bg-gradient-100">
+                    <Button className="py-5 border hover:cursor-pointer bg-gradient-100 hover:bg-gradient-80">
                         Sign Up
                     </Button>
                 </Link>

@@ -22,7 +22,7 @@ export default function Navbar() {
                     </Button>
                 </Link>
                 <Link href={"#"}>
-                    <Button className="py-5 border hover:cursor-pointer">
+                    <Button className="py-5 border hover:cursor-pointer bg-gradient-80 hover:bg-gradient-100">
                         Sign Up
                     </Button>
                 </Link>

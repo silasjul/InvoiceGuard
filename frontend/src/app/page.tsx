@@ -1,4 +1,5 @@
-import Mailanimation from "@/components/mailanimation";
+import HexGrid from "@/components/hexgrid";
+import Mailexample from "@/components/mailexample";
 import Navbar from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { Send } from "lucide-react";
@@ -29,11 +30,12 @@ export default function Home() {
                     </p>
                 </div>
                 <Link href={"#"}>
-                    <Button className="py-6 px-8 mb-12 rounded-full text-md border hover:cursor-pointer bg-gradient-100 hover:bg-gradient-80">
+                    <Button className="py-6 px-8 mb-12 rounded-full text-md hover:scale-105 duration-200 hover:cursor-pointer bg-gradient-100 hover:bg-gradient-100 hover-glow">
                         Get Started
                     </Button>
                 </Link>
-                <Mailanimation />
+                <Mailexample />
+                <HexGrid />
             </section>
         </div>
     );

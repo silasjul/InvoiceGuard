@@ -147,3 +147,7 @@
 
     color: transparent;
 }
+
+.hover-glow:hover {
+    box-shadow: 0 0 50px 5px var(--gradient-80);
+}

@@ -1,3 +1,4 @@
+import Contact from "@/components/contact";
 import Features from "@/components/features";
 import Footer from "@/components/footer";
 import HexGrid from "@/components/hexgrid";
@@ -7,6 +8,7 @@ import NavbarFloating from "@/components/navbarfloating";
 import Pricing from "@/components/pricing";
 import { Button } from "@/components/ui/button";
 import Hex from "@/components/ui/hex";
+import SectionDivider from "@/components/ui/section-divider";
 import { Send } from "lucide-react";
 import Link from "next/link";
 
@@ -44,15 +46,20 @@ export default function Home() {
                     <Hex posX={-200} posY={440} delay={0.5} size={400} />
                 </div>
                 <Link href={"#"}>
-                    <Button className="py-6 px-8 mb-12 rounded-full text-md hover:scale-105 duration-200 hover:cursor-pointer bg-gradient-100 hover:bg-gradient-100 hover-glow">
+                    <Button className="py-6 px-8 mb-12 rounded-full text-md hover:scale-105 duration-75 hover:cursor-pointer bg-gradient-100 hover:bg-gradient-100 hover-glow">
                         Get Started
                     </Button>
                 </Link>
                 <HexGrid />
                 <Mailexample />
+                <p className="opacity-30 font-medium mt-4">Powered by AI</p>
             </section>
+            <SectionDivider />
             <Features />
+            <SectionDivider />
             <Pricing />
+            <SectionDivider />
+            <Contact />
             <Footer />
         </div>
     );

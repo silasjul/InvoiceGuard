@@ -25,7 +25,7 @@ export default function Navbar() {
     return (
         <div
             ref={containerRef}
-            className={"flex justify-center items-center m-8 opacity-0"}
+            className="flex justify-center items-center m-8 opacity-0"
         >
             <Link className="flex gap-1 items-center mr-auto" href={"/"}>
                 <img src={"/logo.png"} alt={"logo"} width={33} height={33} />
@@ -38,12 +38,12 @@ export default function Navbar() {
             </div>
             <div className="flex gap-4 ml-auto">
                 <Link href={"#"}>
-                    <Button className="py-5 bg-accent text-primary hover:text-background border hover:cursor-pointer">
+                    <Button className="py-5 bg-accent text-primary hover:text-background hover:cursor-pointer rounded-full">
                         Login
                     </Button>
                 </Link>
                 <Link href={"#"}>
-                    <Button className="py-5 border hover:cursor-pointer bg-gradient-100 hover:bg-gradient-80">
+                    <Button className="py-5 border hover:cursor-pointer bg-gradient-100 hover:bg-gradient-80 rounded-full">
                         Sign Up
                     </Button>
                 </Link>

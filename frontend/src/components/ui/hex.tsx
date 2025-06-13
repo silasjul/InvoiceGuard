@@ -22,7 +22,7 @@ export default function Hex({
 
         const randomDirection = () => {
             const direction = Math.random() > 0.5 ? 1 : -1;
-            return `+=${30 * direction}`;
+            return `+=${50 * direction}`;
         };
 
         gsap.timeline()

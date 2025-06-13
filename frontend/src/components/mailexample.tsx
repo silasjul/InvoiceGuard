@@ -76,9 +76,9 @@ export default function Mailexample() {
     return (
         <div
             ref={containerRef}
-            className="border rounded-xl opacity-0 w-3/4 lg:max-w-[40vw] 2xl:max-w-[35vw] bg-background"
+            className="border rounded-xl opacity-0 w-3/4 lg:max-w-[45vw] 2xl:max-w-[35vw] bg-background"
         >
-            <div className="m-1 min-h-[550] lg:min-h-[390] rounded-lg border *:px-4">
+            <div className="m-1 min-h-[550] lg:min-h-[480] xl:min-h-[410] rounded-lg border *:px-4">
                 <div className="bg-muted w-full py-1 rounded-lg rounded-b-none border-b-1">
                     <h3 className="font-semibold ">New message</h3>
                 </div>

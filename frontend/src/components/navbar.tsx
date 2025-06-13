@@ -1,11 +1,32 @@
-import React from "react";
+"use client";
+
+import React, { useRef, useState } from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
+import { useGSAP } from "@gsap/react";
+import ScrollTrigger from "gsap/ScrollTrigger";
+import gsap from "gsap";
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Navbar() {
+    const containerRef = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        gsap.timeline({ defaults: { duration: 1, delay: 0 } })
+            .to(containerRef.current, { opacity: 1 }, "A")
+            .from(
+                containerRef.current,
+                {
+                    y: "-50",
+                },
+                "A"
+            );
+    });
     return (
-        /* <div className="fixed left-1/2 -translate-x-1/2 top-8 lg:gap-20 sm:gap-10 w-fit mx-auto px-4 py-3 flex justify-center items-center border rounded-full"> */
-        <div className="m-8 flex justify-center items-center">
+        <div
+            ref={containerRef}
+            className={"flex justify-center items-center m-8 opacity-0"}
+        >
             <Link className="flex gap-1 items-center mr-auto" href={"/"}>
                 <img src={"/logo.png"} alt={"logo"} width={33} height={33} />
                 <h3 className="font-semibold">InvoicePilot</h3>

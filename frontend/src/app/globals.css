@@ -129,6 +129,10 @@
     }
 }
 
+body {
+    overflow-x: hidden;
+}
+
 .gradient-text {
     background: var(--gradient-1); /* fallback for old browsers */
     background: -webkit-linear-gradient(

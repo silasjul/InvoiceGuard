@@ -7,10 +7,12 @@ import React, { useRef } from "react";
 export default function Hex({
     posX,
     posY,
+    size,
     delay,
 }: {
     posX: number;
     posY: number;
+    size: number;
     delay: number;
 }) {
     const container = useRef<SVGGElement>(null);
@@ -20,16 +22,14 @@ export default function Hex({
 
         const randomDirection = () => {
             const direction = Math.random() > 0.5 ? 1 : -1;
-            return `+=${10 * direction}`;
+            return `+=${30 * direction}`;
         };
 
         gsap.timeline()
             .to(container.current, {
                 delay: delay,
-                duration: 4,
-                opacity: .6,
-                x: () => randomDirection(),
-                y: () => randomDirection(),
+                duration: 2,
+                opacity: 1,
                 ease: "power1.inOut",
             })
             .to(container.current, {
@@ -45,8 +45,8 @@ export default function Hex({
 
     return (
         <svg
-            className={`absolute w-40 h-40 overflow-visible`}
-            style={{ left: posX, top: posY }}
+            className={`absolute overflow-visible rotate-90`}
+            style={{ left: posX, top: posY, width: size, height: size }}
             xmlns="http://www.w3.org/2000/svg"
             version="1.1"
             xmlnsXlink="http://www.w3.org/1999/xlink"

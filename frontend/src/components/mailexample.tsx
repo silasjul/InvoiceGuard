@@ -1,7 +1,9 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import AnimatedText from "@/components/ui/animated-text";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
 
 interface MailExample {
     day: number;
@@ -49,26 +51,34 @@ const mailExamples: MailExample[] = [
 
 export default function Mailexample() {
     const [index, setIndex] = useState(0);
+    const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
-            setIndex((prev) => {
-                const newIndex = (prev + 1) % mailExamples.length;
-                console.log(newIndex);
-                return newIndex;
-            });
+            setIndex((prev) => (prev + 1) % mailExamples.length);
         }, 7000);
 
-        // Cleanup
-        return () => {
-            console.log("Clearing interval:", intervalId);
-            clearInterval(intervalId);
-        };
+        return () => clearInterval(intervalId);
     }, []);
 
+    useGSAP(() => {
+        gsap.timeline({ defaults: { duration: 2, delay: 0.5 } })
+            .to(containerRef.current, { opacity: 1 }, "A")
+            .from(
+                containerRef.current,
+                {
+                    y: "50",
+                },
+                "A"
+            );
+    });
+
     return (
-        <div className="border rounded-xl w-3/4 lg:w-[40vw] 2xl:w-[35vw]">
-            <div className="m-1 rounded-lg border *:px-4">
+        <div
+            ref={containerRef}
+            className="border rounded-xl opacity-0 w-3/4 lg:max-w-[40vw] 2xl:max-w-[35vw] bg-background"
+        >
+            <div className="m-1 min-h-[550] lg:min-h-[390] rounded-lg border *:px-4">
                 <div className="bg-muted w-full py-1 rounded-lg rounded-b-none border-b-1">
                     <h3 className="font-semibold ">New message</h3>
                 </div>

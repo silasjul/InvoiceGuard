@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function SectionDivider() {
-    return <div className="h-[20vh] bg-gray-100" />;
+export default function SectionDivider({ vh }: { vh: number }) {
+    return <div className="bg-gray-100" style={{ height: `${vh}vh` }} />;
 }

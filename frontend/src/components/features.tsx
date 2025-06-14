@@ -1,7 +1,6 @@
 import React from "react";
 import FeatureCard from "./ui/feature-card";
 import {
-    BicepsFlexed,
     CalendarArrowUp,
     FastForward,
     HeartHandshake,
@@ -24,7 +23,7 @@ export default function Features() {
             </div>
             <div className="w-3/4 xl:w-3/5 z-10">
                 <h5 className="font-medium text-lg text-gradient-1">
-                    Custom automated reminders
+                    Custom Automated Messaging
                 </h5>
                 <h3 className="font-bold text-6xl mb-16">
                     We help you Save Time & Gain{<br />}Financial Clarity

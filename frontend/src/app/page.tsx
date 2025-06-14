@@ -54,11 +54,11 @@ export default function Home() {
                 <Mailexample />
                 <p className="opacity-30 font-medium mt-4">Powered by AI</p>
             </section>
-            <SectionDivider />
+            <SectionDivider vh={20} />
             <Features />
-            <SectionDivider />
+            <SectionDivider vh={30} />
             <Pricing />
-            <SectionDivider />
+            <SectionDivider vh={40} />
             <Contact />
             <Footer />
         </div>

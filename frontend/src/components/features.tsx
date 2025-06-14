@@ -64,10 +64,11 @@ export default function Features() {
                         }
                         header={"Gain Clarity, Save Time & Resources"}
                     >
-                        InvoicePilot centralizes all your invoicing and payment
-                        tracking, letting you easily view and sort your list of
-                        pending invoices. This helps you identify what's
-                        outstanding and manage payments efficiently.
+                        Gain a clear overview of your reminder process.
+                        InvoicePilot lets you easily see which clients have
+                        received specific reminders. Efficiently manage your
+                        follow-up list by instantly removing recipients who've
+                        paid or no longer need nudges.
                     </FeatureCard>
                     <FeatureCard
                         icon={

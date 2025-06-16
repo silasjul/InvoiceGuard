@@ -6,8 +6,8 @@ export default function Pricing() {
     return (
         <div className="bg-gray-100 flex flex-col items-center justify-center relative">
             <div
-                className="absolute w-[800px] h-[130%] bg-radial-[at_50%_75%] from-sky-200 via-blue-400 to-indigo-900 to-90%  rounded-lg z-[1]
-                  top-0 -translate-y-[10%] shadow-lg"
+                className="absolute w-full xl:w-[800px] h-[115%] xl:h-[130%] bg-radial-[at_50%_75%] from-sky-200 via-blue-400 to-indigo-900 to-90%  xl:rounded-lg z-[1]
+                  top-0 -translate-y-[5%] xl:-translate-y-[10%] shadow-lg"
             />
             <div className="absolute z-[0]">
                 <Hex posX={200} posY={-300} size={800} delay={0} />
@@ -27,37 +27,37 @@ export default function Pricing() {
                     price={0}
                     description={"Try our service for free"}
                     advantages={[
-                        "Up to 3 active invoices",
+                        "Up to 3 active clients",
                         "Access to professional message templates",
                         "Basic 1-step reminder schedule",
-                        "Basic reminder delivery tracking",
+                        "Email delivery tracking",
                         "InvoicePilot branding on emails",
                     ]}
                     buttonText={"Get started for free"}
                 />
                 <PriceCard
                     tier={"Basic"}
-                    price={20}
+                    price={12}
                     description={"Great for freelancers"}
                     advantages={[
-                        "Up to 10 active invoices",
+                        "Up to 25 active clients",
                         "Create your own custom messages",
-                        "Customizable 3-step reminder sequences",
-                        "Detailed email performance tracking",
+                        "Customizable 3-step reminder schedules",
+                        "Email delivery tracking",
                         "No InvoicePilot branding on emails",
                     ]}
                     buttonText={"Get started with Basic"}
                 />
                 <PriceCard
                     tier={"Pro"}
-                    price={85}
+                    price={29}
                     description={"Advanced automation for growing teams"}
                     advantages={[
-                        "Unlimited active invoices",
+                        "Everything in Basic",
+                        "Unlimited active clients",
                         "Custom and AI-powered message generation",
-                        "Fully customizable reminder sequences",
-                        "Detailed email tracking",
-                        "No InvoicePilot branding on emails",
+                        "Fully customizable reminder schedules",
+                        "Advanced email open tracking",
                     ]}
                     buttonText={"Get started with Pro"}
                     highTier={true}

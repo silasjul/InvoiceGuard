@@ -56,7 +56,7 @@ export default function Mailexample() {
     useEffect(() => {
         const intervalId = setInterval(() => {
             setIndex((prev) => (prev + 1) % mailExamples.length);
-        }, 7000);
+        }, 8000);
 
         return () => clearInterval(intervalId);
     }, []);

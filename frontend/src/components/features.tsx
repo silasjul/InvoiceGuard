@@ -25,7 +25,7 @@ export default function Features() {
                 <h5 className="font-medium text-lg text-gradient-1">
                     Custom Automated Messaging
                 </h5>
-                <h3 className="font-bold text-6xl mb-16">
+                <h3 className="font-bold text-5xl lg:text-6xl mb-16">
                     We help you Save Time & Gain{<br />}Financial Clarity
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">

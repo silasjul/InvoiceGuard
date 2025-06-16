@@ -6,6 +6,7 @@ import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import gsap from "gsap";
+import Logo from "./logo";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Navbar() {
@@ -27,10 +28,9 @@ export default function Navbar() {
             ref={containerRef}
             className="flex justify-center items-center m-8 opacity-0"
         >
-            <Link className="flex gap-1 items-center mr-auto" href={"/"}>
-                <img src={"/logo.png"} alt={"logo"} width={33} height={33} />
-                <h3 className="font-semibold">InvoicePilot</h3>
-            </Link>
+            <div className="mr-auto">
+                <Logo />
+            </div>
             <div className="flex gap-12 font-medium *:hover:underline *:underline-offset-3 *:opacity-80 *:hover:opacity-100 *:duration-75">
                 <div className="hover:cursor-pointer">Features</div>
                 <div className="hover:cursor-pointer">Pricing</div>

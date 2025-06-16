@@ -129,8 +129,20 @@
     }
 }
 
+html {
+    scrollbar-gutter: stable !important;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
 body {
     overflow-x: hidden;
+}
+
+html body[data-scroll-locked] {
+    --removed-body-scroll-bar-size: 0 !important;
+    margin-right: 0 !important;
+    background: var(--color-gray-100);
 }
 
 .gradient-text {
@@ -154,4 +166,12 @@ body {
 
 .hover-glow:hover {
     box-shadow: 0 0 50px 5px var(--gradient-80);
+}
+
+body {
+    padding-right: calc(var(--scrollbar-width));
+}
+
+body.modal-open {
+    padding-right: 0;
 }

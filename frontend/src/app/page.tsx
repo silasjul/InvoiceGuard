@@ -46,7 +46,7 @@ export default function Home() {
                     <Hex posX={-200} posY={440} delay={0.5} size={400} />
                 </div>
                 <Link href={"#"}>
-                    <Button className="py-6 px-8 mb-12 rounded-full text-md hover:scale-105 duration-75 hover:cursor-pointer bg-gradient-100 hover:bg-gradient-100 hover-glow">
+                    <Button className="py-6 px-8 mb-12 rounded-full text-md hover:scale-105 duration-150 hover:cursor-pointer bg-gradient-100 hover:bg-gradient-100 hover-glow">
                         Get Started
                     </Button>
                 </Link>
@@ -56,11 +56,10 @@ export default function Home() {
             </section>
             <SectionDivider vh={20} />
             <Features />
-            <SectionDivider vh={30} />
+            <SectionDivider vh={35} />
             <Pricing />
-            <SectionDivider vh={40} />
+            <SectionDivider vh={30} />
             <Contact />
-            <Footer />
         </div>
     );
 }

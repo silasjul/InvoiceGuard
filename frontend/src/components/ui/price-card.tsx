@@ -28,14 +28,14 @@ export default function PriceCard({
         >
             <h4 className={`font-medium text-2xl mb-8`}>{tier}</h4>
             <h3 className="font-medium text-5xl">${price}</h3>
-            <p className="opacity-80 mb-6">Per user/month, billed anually</p>
+            <p className="opacity-80 mb-6">Per user/month, billed monthly</p>
             <p className="font-medium mb-2">{description}</p>
             {advantages.map((text, idx) => (
                 <div
                     key={idx}
-                    className="flex gap-2 text-base font-normal items-center mb-2 opacity-90"
+                    className="flex gap-2 text-base font-normal mb-2 opacity-90"
                 >
-                    <Check className="border rounded-sm w-5 h-5 p-0.5" />
+                    <Check className="border rounded-sm w-5 h-5 p-0.5 mt-[2px]" />
                     {text}
                 </div>
             ))}

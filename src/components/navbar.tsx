@@ -7,10 +7,13 @@ import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import Logo from "./logo";
+import useWindowWidth from "@/hooks/useWindowHook";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Navbar() {
+    const windowWidth = useWindowWidth();
     const containerRef = useRef<HTMLDivElement>(null);
+    const [isOpen, setIsOpen] = useState(false);
 
     useGSAP(() => {
         gsap.timeline({ defaults: { duration: 1, delay: 0 } })
@@ -23,10 +26,12 @@ export default function Navbar() {
                 "A"
             );
     });
+
+
     return (
         <div
             ref={containerRef}
-            className="flex justify-center items-center m-8 opacity-0"
+            className="hidden md:flex justify-center items-center m-8 opacity-0"
         >
             <div className="mr-auto">
                 <Logo />

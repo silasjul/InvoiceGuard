@@ -1,6 +1,7 @@
+"use client";
+
 import Contact from "@/components/contact";
 import Features from "@/components/features";
-import Footer from "@/components/footer";
 import HexGrid from "@/components/hexgrid";
 import Mailexample from "@/components/mailexample";
 import Navbar from "@/components/navbar";
@@ -11,8 +12,21 @@ import Hex from "@/components/ui/hex";
 import SectionDivider from "@/components/ui/section-divider";
 import { Send } from "lucide-react";
 import Link from "next/link";
+import { useGSAP } from "@gsap/react";
+import gsap from "gsap";
+import { useRef } from "react";
+import SplitText from "gsap/SplitText";
+gsap.registerPlugin(SplitText);
 
 export default function Home() {
+    const refH1A = useRef<HTMLHeadingElement>(null);
+    const refH1B = useRef<HTMLHeadingElement>(null);
+    const refP = useRef<HTMLParagraphElement>(null);
+
+    useGSAP(() => {
+        gsap.timeline().to(refH1A, {});
+    });
+
     return (
         <div>
             <Navbar />
@@ -26,14 +40,23 @@ export default function Home() {
                         </p>
                     </div>
                 </div>
-                <h1 className="text-center text-7xl font-extrabold text-balance">
+                <h1
+                    ref={refH1A}
+                    className="text-center text-7xl font-extrabold text-balance"
+                >
                     The Platform for Automated
                 </h1>
-                <h1 className="text-center text-7xl font-extrabold text-balance gradient-text">
+                <h1
+                    ref={refH1B}
+                    className="text-center text-7xl font-extrabold text-balance gradient-text"
+                >
                     Invoice Reminders
                 </h1>
                 <div className="mt-4 mb-16 flex justify-center">
-                    <p className="text-muted-foreground text-xl text-center">
+                    <p
+                        ref={refP}
+                        className="text-muted-foreground text-xl text-center"
+                    >
                         Stop wasting hours chasing overdue invoices.
                     </p>
                 </div>

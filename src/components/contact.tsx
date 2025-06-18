@@ -1,28 +1,47 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import ContactForm from "./contact-form";
 import Hex from "./ui/hex";
 import useWindowWidth from "@/hooks/useWindowHook";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function Contacts() {
+    const container = useRef<HTMLDivElement>(null);
     const windowWidth = useWindowWidth();
+
+    useGSAP(() => {
+        gsap.from(container.current, {
+            scrollTrigger: {
+                trigger: container.current,
+                start: "center bottom",
+            },
+            opacity: 0,
+            y: 50,
+            ease: "power1.inOut",
+            duration: 1,
+        });
+    });
 
     return (
         <div className="bg-gradient-to-t from-gradient-80 to-gray-100 flex justify-center pb-30 overflow-hidden">
             <div className="absolute left-0 z-0">
                 <Hex posX={0} posY={0} size={300} delay={0} />
-                <Hex posX={-300} posY={230} size={800} delay={1} />
+                <Hex posX={-300} posY={220} size={800} delay={1} />
             </div>
             <div className="absolute right-0 z-0">
                 <Hex posX={-350} posY={400} size={350} delay={0.3} />
             </div>
-            <div className="relative flex bg-white w-[80%] md:w-[60%] rounded-xl mt-30 shadow-xl">
+            <div
+                ref={container}
+                className="relative flex bg-white w-[80%] md:w-[60%] rounded-xl mt-30 shadow-xl"
+            >
                 <div className="flex-2 m-12">
                     <h5 className="font-medium text-lg text-gradient-1">
                         We'd love to help
                     </h5>
-                    <h3 className="font-bold text-5xl mb-16">Contact us</h3>
+                    <h3 className="font-bold text-5xl mb-12">Contact us</h3>
                     <ContactForm />
                 </div>
                 <div className="xl:flex-3 flex justify-center items-center bg-[#0A192F] rounded-r-xl">

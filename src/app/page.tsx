@@ -12,19 +12,39 @@ import Hex from "@/components/ui/hex";
 import SectionDivider from "@/components/ui/section-divider";
 import { Send } from "lucide-react";
 import Link from "next/link";
-import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef } from "react";
 import SplitText from "gsap/SplitText";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
 gsap.registerPlugin(SplitText);
 
 export default function Home() {
     const refH1A = useRef<HTMLHeadingElement>(null);
     const refH1B = useRef<HTMLHeadingElement>(null);
     const refP = useRef<HTMLParagraphElement>(null);
+    const refDesign = useRef<HTMLDivElement>(null);
+    const refBtn = useRef<HTMLAnchorElement>(null);
+    const refPoweredAI = useRef<HTMLParagraphElement>(null);
 
     useGSAP(() => {
-        gsap.timeline().to(refH1A, {});
+        const splitP = SplitText.create(refP.current, {
+            type: "chars",
+        });
+
+        gsap.from([refH1A.current, refH1B.current, refDesign.current], {
+            opacity: 0,
+            delay: 0.5,
+            duration: 1,
+            y: 50,
+            ease: "power1.out",
+        });
+        gsap.from(splitP.chars, { opacity: 0, delay: 1.2, stagger: 0.03 });
+        gsap.from([refBtn.current, refPoweredAI.current], {
+            opacity: 0,
+            delay: 1.2,
+            duration: 2,
+            y: 50,
+        });
     });
 
     return (
@@ -32,7 +52,7 @@ export default function Home() {
             <Navbar />
             <NavbarFloating />
             <section className="flex flex-col mt-[10vh] justify-center items-center bg-gradient-to-b from-transparent to-gray-100 ">
-                <div className="flex justify-center mb-8">
+                <div ref={refDesign} className="flex justify-center mb-8">
                     <div className="w-fit rounded-xl px-4 py-2 shadow-lg flex gap-2 justify-center">
                         <Send />
                         <p className="text-center font-medium gradient-text">
@@ -68,14 +88,16 @@ export default function Home() {
                     <Hex posX={-450} posY={600} delay={0.5} size={200} />
                     <Hex posX={-200} posY={440} delay={0.5} size={400} />
                 </div>
-                <Link href={"#"}>
+                <Link ref={refBtn} href={"#"}>
                     <Button className="py-6 px-8 mb-12 rounded-full text-md hover:scale-105 duration-150 hover:cursor-pointer bg-gradient-100 hover:bg-gradient-100 hover-glow">
                         Get Started
                     </Button>
                 </Link>
                 <HexGrid />
                 <Mailexample />
-                <p className="opacity-30 font-medium mt-4">Powered by AI</p>
+                <p ref={refPoweredAI} className="opacity-30 font-medium mt-4">
+                    Powered by AI
+                </p>
             </section>
             <SectionDivider vh={20} />
             <Features />

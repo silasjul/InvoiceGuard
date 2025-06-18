@@ -22,6 +22,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "./ui/select";
+import { Toaster, toast } from "sonner";
 
 const formSchema = z.object({
     fullName: z.string().min(2, "Name must be at least 2 characters."),
@@ -33,6 +34,7 @@ const formSchema = z.object({
 type formType = z.infer<typeof formSchema>;
 
 export default function ContactForm() {
+    
     const form = useForm<formType>({
         resolver: zodResolver(formSchema),
         defaultValues: {
@@ -44,98 +46,109 @@ export default function ContactForm() {
     });
 
     function onSubmit(values: formType) {
+        toast.message("Thank You!", {
+            description:
+                "Your message has been sent successfully. Our team will review your inquiry and get back to you soon.",
+        });
         console.log(values);
+        form.reset();
     }
 
     return (
-        <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-                <FormField
-                    control={form.control}
-                    name="fullName"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Full name</FormLabel>
-                            <FormControl>
-                                <Input placeholder="John Due" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="email"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Email</FormLabel>
-                            <FormControl>
-                                <Input
-                                    placeholder="example@gmail.com"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="topic"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Topic</FormLabel>
-                            <FormControl>
-                                <Select
-                                    onValueChange={field.onChange}
-                                    defaultValue={field.value}
-                                >
-                                    <FormControl>
-                                        <SelectTrigger>
-                                            <SelectValue placeholder="Select a topic." />
-                                        </SelectTrigger>
-                                    </FormControl>
-                                    <SelectContent>
-                                        <SelectItem value="Question">
-                                            Question
-                                        </SelectItem>
-                                        <SelectItem value="Feedback">
-                                            Feedback
-                                        </SelectItem>
-                                        <SelectItem value="Other">
-                                            Other
-                                        </SelectItem>
-                                    </SelectContent>
-                                </Select>
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <FormField
-                    control={form.control}
-                    name="message"
-                    render={({ field }) => (
-                        <FormItem>
-                            <FormLabel>Message</FormLabel>
-                            <FormControl>
-                                <Textarea
-                                    className="h-[200px]"
-                                    placeholder="Write your message"
-                                    {...field}
-                                />
-                            </FormControl>
-                            <FormMessage />
-                        </FormItem>
-                    )}
-                />
-                <Button
-                    className="w-full bg-gradient-100 hover:bg-gradient-80 hover:cursor-pointer"
-                    type="submit"
+        <>
+            <Toaster />
+            <Form {...form}>
+                <form
+                    onSubmit={form.handleSubmit(onSubmit)}
+                    className="space-y-8"
                 >
-                    Send message
-                </Button>
-            </form>
-        </Form>
+                    <FormField
+                        control={form.control}
+                        name="fullName"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Full name</FormLabel>
+                                <FormControl>
+                                    <Input placeholder="John Due" {...field} />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="email"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Email</FormLabel>
+                                <FormControl>
+                                    <Input
+                                        placeholder="example@gmail.com"
+                                        {...field}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="topic"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Topic</FormLabel>
+                                <FormControl>
+                                    <Select
+                                        onValueChange={field.onChange}
+                                        defaultValue={field.value}
+                                    >
+                                        <FormControl>
+                                            <SelectTrigger>
+                                                <SelectValue placeholder="Select a topic." />
+                                            </SelectTrigger>
+                                        </FormControl>
+                                        <SelectContent>
+                                            <SelectItem value="Question">
+                                                Question
+                                            </SelectItem>
+                                            <SelectItem value="Feedback">
+                                                Feedback
+                                            </SelectItem>
+                                            <SelectItem value="Other">
+                                                Other
+                                            </SelectItem>
+                                        </SelectContent>
+                                    </Select>
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <FormField
+                        control={form.control}
+                        name="message"
+                        render={({ field }) => (
+                            <FormItem>
+                                <FormLabel>Message</FormLabel>
+                                <FormControl>
+                                    <Textarea
+                                        className="h-[200px]"
+                                        placeholder="Write your message"
+                                        {...field}
+                                    />
+                                </FormControl>
+                                <FormMessage />
+                            </FormItem>
+                        )}
+                    />
+                    <Button
+                        className="w-full bg-gradient-100 hover:bg-gradient-80 hover:cursor-pointer"
+                        type="submit"
+                    >
+                        Send message
+                    </Button>
+                </form>
+            </Form>
+        </>
     );
 }

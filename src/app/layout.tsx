@@ -8,7 +8,7 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
-    title: "InvoicePilot",
+    title: "InvoiceGuard",
     description: "Automate invoice reminders",
 };
 

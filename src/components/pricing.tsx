@@ -1,11 +1,32 @@
-import React from "react";
+import React, { useRef } from "react";
 import PriceCard from "./ui/price-card";
 import Hex from "./ui/hex";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function Pricing() {
+    const prices = useRef<HTMLDivElement>(null);
+    const bg = useRef<HTMLDivElement>(null);
+
+    useGSAP(() => {
+        if (prices.current) {
+            gsap.from([prices.current.children], {
+                scrollTrigger: {
+                    trigger: prices.current,
+                    start: "top bottom", // when the top of the trigger hits the bottom of the viewport
+                    end: "bottom center", // when the bottom of the trigger hits the top of the viewport
+                    scrub: true,
+                },
+                y: 100,
+                duration: 1,
+            });
+        }
+    });
+
     return (
         <div className="bg-gray-100 flex flex-col items-center justify-center relative">
             <div
+                ref={bg}
                 className="absolute w-full xl:w-[800px] h-[115%] xl:h-[130%] bg-radial-[at_50%_75%] from-sky-200 via-blue-400 to-indigo-900 to-90%  xl:rounded-lg z-[1]
                   top-0 -translate-y-[5%] xl:-translate-y-[10%] shadow-lg"
             />
@@ -21,7 +42,10 @@ export default function Pricing() {
                     Plans and pricing
                 </h3>
             </div>
-            <div className="flex flex-wrap gap-8 justify-center mx-10 z-10">
+            <div
+                ref={prices}
+                className="flex flex-wrap gap-8 justify-center mx-10 z-10"
+            >
                 <PriceCard
                     tier={"Free"}
                     price={0}

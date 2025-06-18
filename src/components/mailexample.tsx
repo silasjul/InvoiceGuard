@@ -62,7 +62,7 @@ export default function Mailexample() {
     }, []);
 
     useGSAP(() => {
-        gsap.timeline({ defaults: { duration: 2, delay: 0.5 } })
+        gsap.timeline({ defaults: { duration: 2, delay: 1.2 } })
             .to(containerRef.current, { opacity: 1 }, "A")
             .from(
                 containerRef.current,

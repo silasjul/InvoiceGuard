@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import FeatureCard from "./ui/feature-card";
 import {
     CalendarArrowUp,
@@ -7,10 +7,46 @@ import {
     SlidersHorizontal,
 } from "lucide-react";
 import Hex from "./ui/hex";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
 
 export default function Features() {
+    const header = useRef<HTMLDivElement>(null);
+    const cards = useRef<HTMLDivElement>(null);
+
     const iconSize = 40;
     const iconColor = "#0575e6";
+
+    useGSAP(() => {
+        if (header.current) {
+            gsap.from(header.current.children, {
+                scrollTrigger: {
+                    trigger: header.current,
+                    start: "bottom bottom",
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                stagger: 0.3,
+                ease: "power1.inout",
+            });
+        }
+
+        if (cards.current) {
+            gsap.from(cards.current.children, {
+                scrollTrigger: {
+                    trigger: cards.current,
+                    start: "top center",
+                },
+                y: 70,
+                rotateX: -90,
+                opacity: 0,
+                duration: .8,
+                stagger: 0.25,
+                ease: "power1.inout",
+            });
+        }
+    });
 
     return (
         <section className="bg-gray-100 flex justify-center">
@@ -22,18 +58,23 @@ export default function Features() {
                 <Hex posX={-120} posY={400} size={300} delay={0} />
             </div>
             <div className="w-3/4 xl:w-3/5 z-10">
-                <h5 className="font-medium text-lg text-gradient-1">
-                    Custom Automated Messaging
-                </h5>
-                <h3 className="font-bold text-5xl lg:text-6xl mb-16">
-                    We help you Save Time & Gain{<br />}Financial Clarity
-                </h3>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                <div ref={header}>
+                    <h5 className="font-medium text-lg text-gradient-1">
+                        Custom Automated Messaging
+                    </h5>
+                    <h3 className="font-bold text-5xl lg:text-6xl mb-16">
+                        We help you Save Time & Gain{<br />}Financial Clarity
+                    </h3>
+                </div>
+                <div
+                    ref={cards}
+                    className="grid grid-cols-1 sm:grid-cols-2 gap-8"
+                >
                     <FeatureCard
                         icon={<FastForward size={iconSize} color={iconColor} />}
                         header={"Automate Reminders, Accelerate Payments"}
                     >
-                        Stop manual chasing! InvoicePilot automatically sends
+                        Stop manual chasing! InvoiceGuard automatically sends
                         your payment reminders via email. Customize timing and
                         frequency to significantly reduce overdue payments.
                     </FeatureCard>
@@ -64,7 +105,7 @@ export default function Features() {
                         header={"Gain Clarity, Save Time & Resources"}
                     >
                         Gain a clear overview of your reminder process.
-                        InvoicePilot lets you easily see which clients have
+                        InvoiceGuard lets you easily see which clients have
                         received specific reminders. Efficiently manage your
                         follow-up list by instantly removing recipients who've
                         paid or no longer need nudges.

@@ -6,9 +6,14 @@ import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import gsap from "gsap";
+import { Sections } from "@/app/page";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function NavbarFloating() {
+export default function NavbarFloating({
+    scrollToSection,
+}: {
+    scrollToSection: (sections: Sections) => void;
+}) {
     const containerRef = useRef<HTMLDivElement>(null);
 
     useGSAP(() => {
@@ -48,9 +53,24 @@ export default function NavbarFloating() {
                 <img src={"/logo.png"} alt={"logo"} width={33} height={33} />
             </Link>
             <div className="flex gap-12 font-medium *:hover:underline *:underline-offset-3 *:opacity-80 *:hover:opacity-100 *:duration-75">
-                <div className="hover:cursor-pointer">Features</div>
-                <div className="hover:cursor-pointer">Pricing</div>
-                <div className="hover:cursor-pointer">Contact</div>
+                <div
+                    className="hover:cursor-pointer"
+                    onClick={() => scrollToSection("features")}
+                >
+                    Features
+                </div>
+                <div
+                    className="hover:cursor-pointer"
+                    onClick={() => scrollToSection("prices")}
+                >
+                    Pricing
+                </div>
+                <div
+                    className="hover:cursor-pointer"
+                    onClick={() => scrollToSection("contact")}
+                >
+                    Contact
+                </div>
             </div>
             <Link className="ml-8" href={"#"}>
                 <Button className="py-5 rounded-full text-base border hover:cursor-pointer bg-gradient-100 hover:bg-gradient-80">

@@ -1,10 +1,10 @@
-import React, { useRef } from "react";
+import React, { RefObject, useRef } from "react";
 import PriceCard from "./ui/price-card";
 import Hex from "./ui/hex";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-export default function Pricing() {
+export default function Pricing({ref}:{ref: RefObject<null>}) {
     const prices = useRef<HTMLDivElement>(null);
     const bg = useRef<HTMLDivElement>(null);
 
@@ -24,7 +24,7 @@ export default function Pricing() {
     });
 
     return (
-        <div className="bg-gray-100 flex flex-col items-center justify-center relative">
+        <div ref={ref} className="bg-gray-100 flex flex-col items-center justify-center relative">
             <div
                 ref={bg}
                 className="absolute w-full xl:w-[800px] h-[115%] xl:h-[130%] bg-radial-[at_50%_75%] from-sky-200 via-blue-400 to-indigo-900 to-90%  xl:rounded-lg z-[1]

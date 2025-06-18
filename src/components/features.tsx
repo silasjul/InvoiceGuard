@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { RefObject, useRef } from "react";
 import FeatureCard from "./ui/feature-card";
 import {
     CalendarArrowUp,
@@ -10,7 +10,7 @@ import Hex from "./ui/hex";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 
-export default function Features() {
+export default function Features({ ref }: { ref: RefObject<null> }) {
     const header = useRef<HTMLDivElement>(null);
     const cards = useRef<HTMLDivElement>(null);
 
@@ -41,7 +41,7 @@ export default function Features() {
                 y: 70,
                 rotateX: -90,
                 opacity: 0,
-                duration: .8,
+                duration: 0.8,
                 stagger: 0.25,
                 ease: "power1.inout",
             });
@@ -49,7 +49,7 @@ export default function Features() {
     });
 
     return (
-        <section className="bg-gray-100 flex justify-center">
+        <section ref={ref} className="bg-gray-100 flex justify-center">
             <div className="absolute left-0 opacity-80">
                 <Hex posX={-100} posY={500} size={300} delay={0} />
                 <Hex posX={0} posY={200} size={200} delay={0.5} />

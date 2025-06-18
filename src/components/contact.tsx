@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { RefObject, useRef } from "react";
 import ContactForm from "./contact-form";
 import Hex from "./ui/hex";
 import useWindowWidth from "@/hooks/useWindowHook";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
+import { Toaster } from "sonner";
 
-export default function Contacts() {
+export default function Contacts({ ref }: { ref: RefObject<null> }) {
     const container = useRef<HTMLDivElement>(null);
     const windowWidth = useWindowWidth();
 
@@ -25,7 +26,10 @@ export default function Contacts() {
     });
 
     return (
-        <div className="bg-gradient-to-t from-gradient-80 to-gray-100 flex justify-center pb-30 overflow-hidden">
+        <div
+            ref={ref}
+            className="bg-gradient-to-t from-gradient-80 to-gray-100 flex justify-center pb-30 overflow-hidden"
+        >
             <div className="absolute left-0 z-0">
                 <Hex posX={0} posY={0} size={300} delay={0} />
                 <Hex posX={-300} posY={220} size={800} delay={1} />

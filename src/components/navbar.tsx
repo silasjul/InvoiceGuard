@@ -1,19 +1,21 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { Button } from "./ui/button";
 import Link from "next/link";
 import { useGSAP } from "@gsap/react";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import gsap from "gsap";
 import Logo from "./logo";
-import useWindowWidth from "@/hooks/useWindowHook";
+import { Sections } from "@/app/page";
 gsap.registerPlugin(ScrollTrigger);
 
-export default function Navbar() {
-    const windowWidth = useWindowWidth();
+export default function Navbar({
+    scrollToSection,
+}: {
+    scrollToSection: (sections: Sections) => void;
+}) {
     const containerRef = useRef<HTMLDivElement>(null);
-    const [isOpen, setIsOpen] = useState(false);
 
     useGSAP(() => {
         gsap.timeline({ defaults: { duration: 1, delay: 0 } })
@@ -27,7 +29,6 @@ export default function Navbar() {
             );
     });
 
-
     return (
         <div
             ref={containerRef}
@@ -37,9 +38,24 @@ export default function Navbar() {
                 <Logo />
             </div>
             <div className="flex gap-12 font-medium *:hover:underline *:underline-offset-3 *:opacity-80 *:hover:opacity-100 *:duration-75">
-                <div className="hover:cursor-pointer">Features</div>
-                <div className="hover:cursor-pointer">Pricing</div>
-                <div className="hover:cursor-pointer">Contact</div>
+                <div
+                    className="hover:cursor-pointer"
+                    onClick={() => scrollToSection("features")}
+                >
+                    Features
+                </div>
+                <div
+                    className="hover:cursor-pointer"
+                    onClick={() => scrollToSection("prices")}
+                >
+                    Pricing
+                </div>
+                <div
+                    className="hover:cursor-pointer"
+                    onClick={() => scrollToSection("contact")}
+                >
+                    Contact
+                </div>
             </div>
             <div className="flex gap-4 ml-auto">
                 <Link href={"#"}>

@@ -15,8 +15,11 @@ import Link from "next/link";
 import gsap from "gsap";
 import SplitText from "gsap/SplitText";
 import { useGSAP } from "@gsap/react";
-import { useRef } from "react";
+import { RefObject, useRef } from "react";
+import { Toaster } from "sonner";
 gsap.registerPlugin(SplitText);
+
+export type Sections = "features" | "prices" | "contact";
 
 export default function Home() {
     const refH1A = useRef<HTMLHeadingElement>(null);
@@ -25,6 +28,33 @@ export default function Home() {
     const refDesign = useRef<HTMLDivElement>(null);
     const refBtn = useRef<HTMLAnchorElement>(null);
     const refPoweredAI = useRef<HTMLParagraphElement>(null);
+
+    const featureSection = useRef(null);
+    const priceSection = useRef(null);
+    const contactSection = useRef(null);
+
+    const scrollToRef = (ref: RefObject<HTMLElement | null>) => {
+        if (!ref.current) return;
+
+        ref.current.scrollIntoView({
+            behavior: "smooth",
+            block: "start",
+        });
+    };
+
+    const scrollToSection = (section: Sections) => {
+        switch (section) {
+            case "features":
+                scrollToRef(featureSection);
+                break;
+            case "prices":
+                scrollToRef(priceSection);
+                break;
+            case "contact":
+                scrollToRef(contactSection);
+                break;
+        }
+    };
 
     useGSAP(() => {
         const splitP = SplitText.create(refP.current, {
@@ -49,8 +79,9 @@ export default function Home() {
 
     return (
         <div>
-            <Navbar />
-            <NavbarFloating />
+            <Toaster />
+            <Navbar scrollToSection={scrollToSection} />
+            <NavbarFloating scrollToSection={scrollToSection} />
             <section className="flex flex-col mt-[10vh] justify-center items-center bg-gradient-to-b from-transparent to-gray-100 ">
                 <div ref={refDesign} className="flex justify-center mb-8">
                     <div className="w-fit rounded-xl px-4 py-2 shadow-lg flex gap-2 justify-center">
@@ -100,11 +131,11 @@ export default function Home() {
                 </p>
             </section>
             <SectionDivider vh={20} />
-            <Features />
+            <Features ref={featureSection} />
             <SectionDivider vh={35} />
-            <Pricing />
+            <Pricing ref={priceSection} />
             <SectionDivider vh={30} />
-            <Contact />
+            <Contact ref={contactSection} />
         </div>
     );
 }

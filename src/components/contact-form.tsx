@@ -22,7 +22,7 @@ import {
     SelectTrigger,
     SelectValue,
 } from "./ui/select";
-import { Toaster, toast } from "sonner";
+import { toast } from "sonner";
 
 const formSchema = z.object({
     fullName: z.string().min(2, "Name must be at least 2 characters."),
@@ -56,7 +56,6 @@ export default function ContactForm() {
 
     return (
         <>
-            <Toaster />
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}

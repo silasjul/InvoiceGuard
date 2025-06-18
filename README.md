@@ -8,7 +8,7 @@
 ██║██║ ╚████║ ╚████╔╝ ╚██████╔╝██║╚██████╗███████╗╚██████╔╝╚██████╔╝██║  ██║██║  ██║██████╔╝
 ╚═╝╚═╝  ╚═══╝  ╚═══╝   ╚═════╝ ╚═╝ ╚═════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ 
 ------------------------------------------------------------------------------------------------
-Exploring designs with Nextjs and gsap.
+Frontend project to work on my design skills. Made with Next.js and Gsap
 </pre>
 
 [![Python](https://img.shields.io/badge/Python-3.13%2B-blue)](https://www.python.org/)
